@@ -7,25 +7,34 @@ class App extends React.Component{
   constructor(){ 
     super() 
     this.state={ 
-      userName: ''
+      userName: '',
+      nameError: ''
     } 
   } 
 
   //onClick function
-  onClick = (event) =>{
-    console.log("Save button is clicked",event)
+  onClick = ($event) =>{
+    console.log("save button is clicked",$event)
     window.open(this.url, "_blank")
   }
 
   onNameChange = (event) => {
-    console.log("value is ", event.target.value)
+    console.log("value is ", event.target.value);
+    const nameRegex = RegExp("^[A-Z]{1}[a-zA-z\\s]{2,}$");
     //set the title using setState method
     this.setState({userName: event.target.value})
+
+    if(nameRegex.test(event.target.value)){
+      this.setState({nameError: ''})
+    }else{
+      this.setState({nameError: 'Name is Invalid'})
+    }
   }
+  
 
   render(){
     return( 
-      <>
+      <div>
       <div> 
         <h1>Hello {this.state.userName} From BridgeLabz</h1> 
         <img src={logo} onClick={this.onClick}
@@ -33,8 +42,9 @@ class App extends React.Component{
       </div> 
       <div className="text-box">
         <input onChange={this.onNameChange} />
+        <span className="error-output">{this.state.nameError}</span>
       </div>
-      </>
+      </div>
       );
     }
 }
