@@ -1,30 +1,21 @@
 import './App.css';
-import { render } from '@testing-library/react';
 import React from 'react';
-
-// class App extends React.Component {
-//   render() {
-//     return (
-//       <div>
-//       <hi> Hello form Bridgelabz </hi>
-//       </div>
-//     );
-//    }
-// }
+import logo from './asset/BL_logo_square_jpg.jpg'
 
 class App extends React.Component {
   constructor() {
     super()
-    this.state = {
-      title: 'Hello From BridgeLabz'
+    this.state={
+      title: "Hello From BrigdeLabz"
     }
   }
   render() {
     return (
       <div>
-        <h1>{this.state.title}</h1>
+      <h1>{this.state.title}</h1>
+      <img src={logo} alt="The BridgeLabz Logo" />
       </div>
-    ); 
+    );
   }
 }
 export default App;
